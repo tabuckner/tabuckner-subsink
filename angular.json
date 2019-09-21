@@ -2,5 +2,170 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "@tabuckner/subsink": {
+      "root": "projects/tabuckner/subsink",
+      "sourceRoot": "projects/tabuckner/subsink/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tabuckner/subsink/tsconfig.lib.json",
+            "project": "projects/tabuckner/subsink/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/tabuckner/subsink/src/test.ts",
+            "tsConfig": "projects/tabuckner/subsink/tsconfig.spec.json",
+            "karmaConfig": "projects/tabuckner/subsink/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/tabuckner/subsink/tsconfig.lib.json",
+              "projects/tabuckner/subsink/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "subsink-demo": {
+      "root": "projects/subsink-demo/",
+      "sourceRoot": "projects/subsink-demo/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/subsink-demo",
+            "index": "projects/subsink-demo/src/index.html",
+            "main": "projects/subsink-demo/src/main.ts",
+            "polyfills": "projects/subsink-demo/src/polyfills.ts",
+            "tsConfig": "projects/subsink-demo/tsconfig.app.json",
+            "assets": [
+              "projects/subsink-demo/src/favicon.ico",
+              "projects/subsink-demo/src/assets"
+            ],
+            "styles": [
+              "projects/subsink-demo/src/styles.css"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/subsink-demo/src/environments/environment.ts",
+                  "with": "projects/subsink-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "subsink-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "subsink-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "subsink-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/subsink-demo/src/test.ts",
+            "polyfills": "projects/subsink-demo/src/polyfills.ts",
+            "tsConfig": "projects/subsink-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/subsink-demo/karma.conf.js",
+            "styles": [
+              "projects/subsink-demo/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/subsink-demo/src/favicon.ico",
+              "projects/subsink-demo/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/subsink-demo/tsconfig.app.json",
+              "projects/subsink-demo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "subsink-demo-e2e": {
+      "root": "projects/subsink-demo-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/subsink-demo-e2e/protractor.conf.js",
+            "devServerTarget": "subsink-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "subsink-demo:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/subsink-demo-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "@tabuckner/subsink"
 }

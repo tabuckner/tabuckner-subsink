@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@tabuckner/subsink": [
+        "dist/tabuckner/subsink"
+      ],
+      "@tabuckner/subsink/*": [
+        "dist/tabuckner/subsink/*"
+      ]
+    }
   }
 }
