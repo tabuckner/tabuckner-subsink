@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
-import { SubsConsumer, SubSink } from 'projects/tabuckner/subsink/src/public-api';
+import { SubsConsumer, SubSink } from 'dist/tabuckner/subsink';
 import { Subscription, Subject } from 'rxjs';
 
-@SubSink()
+@SubSink({debug: true})
 @Component({
   selector: 'app-test-two',
   templateUrl: './test-two.component.html',

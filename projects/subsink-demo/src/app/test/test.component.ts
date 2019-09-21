@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { SubSinkConsumer, SubSink } from 'projects/tabuckner/subsink/src/public-api';
+import { SubSinkConsumer, SubSink } from 'dist/tabuckner/subsink';
 import { Subscription, Subject } from 'rxjs';
 
 @SubSink()
