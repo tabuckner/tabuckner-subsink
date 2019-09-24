@@ -22,3 +22,6 @@ Run `ng test subsink` to execute the unit tests via [Karma](https://karma-runner
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+### Inspired By
+Netanel Basal's [ngx-auto-unsubscribe](https://github.com/NetanelBasal/ngx-auto-unsubscribe).
