@@ -1,13 +1,11 @@
-const isFunction = (fn) => {
-  return typeof fn === 'function';
-};
+import { isFunction } from './helpers/is-function';
 
 export function SubSink({ debug = false } = {}) {
   return function(constructor: any) {
     const ogOnDestroy = constructor.prototype.ngOnDestroy;
 
     if (!isFunction(ogOnDestroy)) {
-      throw new Error(`${constructor.name} is using @AutoUnsubscribe but does not implement OnDestroy`);
+      throw new Error(`${constructor.name} is using @SubSink but does not implement OnDestroy`);
     }
 
     constructor.prototype.ngOnDestroy = function() {

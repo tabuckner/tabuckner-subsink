@@ -7,5 +7,7 @@
 </div>
 <button (click)="showComponent1 = !showComponent1">Toggle Component 1</button>
 <button (click)="showComponent2 = !showComponent2">Toggle Component 2</button>
+<button (click)="showComponent3 = !showComponent3">Toggle Component 3</button>
 <app-test *ngIf="showComponent1"></app-test>
 <app-test-two *ngIf="showComponent2"></app-test-two>
+<app-test-three *ngIf="showComponent3"></app-test-three>

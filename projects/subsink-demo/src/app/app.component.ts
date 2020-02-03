@@ -9,4 +9,5 @@ export class AppComponent {
   title = 'subsink-demo';
   showComponent1 = true;
   showComponent2 = true;
+  showComponent3 = true;
 }
